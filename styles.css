@@ -1,0 +1,364 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Space+Mono:wght@400;700&display=swap");
+
+.slide-text {
+  opacity: 0;
+  transform: translateX(-40px);
+  animation: slideIn 0.8s ease-out forwards;
+  color: #1319b7;
+  font-size: 2.2rem;
+  font-family: "Orbitron", sans-serif;
+  font-weight: 900;
+  letter-spacing: 2px;
+}
+@keyframes slideIn {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+body {
+  font-family: "Space Mono", monospace;
+  background: linear-gradient(
+    180deg,
+    #ffffff 0%,
+    #919191 100%
+  ); /* Digivice casing */
+  min-height: 100vh;
+  color: #333;
+  position: relative;
+}
+
+@keyframes blackPulse {
+  0%,
+  100% {
+    background-color: #4a4a4a;
+  }
+  50% {
+    background-color: #000000;
+  }
+}
+
+header {
+  padding: 8px;
+  text-align: center;
+}
+
+header h1 {
+  font-size: 2.5em;
+  margin-bottom: 10px;
+  font-family: "Orbitron", sans-serif;
+  font-weight: 900;
+}
+
+header p {
+  font-size: 1.1em;
+  opacity: 0.8;
+}
+
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: flex-start;
+  background: #000;
+  border: 15px solid #0400ff;
+  border-radius: 45px;
+  padding: 18px;
+  box-shadow:
+    0 16px 40px rgba(0, 0, 0, 0.45),
+    inset 0 6px 12px rgba(255, 255, 255, 0.5);
+}
+
+main {
+  gap: 32px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  max-width: 1200px;
+  margin: 16px auto;
+  padding: 0 20px;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  width: 100%;
+}
+
+.left-panel {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.info {
+  height: 100%;
+  margin: 0;
+  animation: blackPulse 6s ease-in-out infinite;
+  border: 2px solid #333;
+  border-radius: 10px;
+  padding: 12px;
+  color: #00ff00;
+  box-shadow: inset 0 8px 20px rgba(0, 0, 0, 0.6);
+  text-align: center;
+}
+
+.rank {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 12px;
+}
+
+.rank-levels {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+#playerScore {
+  text-align: center;
+}
+
+#player-score p {
+  margin-bottom: 12px;
+}
+
+#bossScore {
+  text-align: center;
+}
+
+#boss-score p {
+  margin-bottom: 12px;
+}
+
+.button-list {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+button {
+  margin: 12px auto 0;
+  display: block;
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #6b81ff, #2f3dd3 70%);
+  border: 4px solid rgba(150, 162, 255, 0.6);
+  box-shadow:
+    0 10px 0 rgba(0, 14, 139, 0.8),
+    0 18px 30px rgba(0, 0, 0, 0.6),
+    0 0 18px rgba(129, 107, 255, 0.25),
+    inset 0 2px 6px rgba(255, 255, 255, 0.2);
+  color: #fff;
+  font-family: "Orbitron", sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  animation: slideInTop 0.6s ease-out forwards;
+  transition:
+    transform 0.12s ease,
+    box-shadow 0.12s ease;
+}
+
+button:hover {
+  transform: translateY(-4px) scale(1.04);
+  box-shadow:
+    0 14px 0 rgba(0, 0, 139, 0.8),
+    0 28px 40px rgba(0, 0, 0, 0.7),
+    0 0 28px rgba(107, 134, 255, 0.45),
+    inset 0 2px 8px rgba(255, 255, 255, 0.25);
+}
+
+button:active {
+  transform: translateY(2px) scale(0.98);
+  box-shadow:
+    0 6px 0 rgba(0, 9, 139, 0.8),
+    0 12px 18px rgba(0, 0, 0, 0.6);
+}
+
+#digimonGrid h2 {
+  text-align: center;
+  margin-bottom: 12px;
+  color: #00ff00;
+}
+
+#digimonContainer,
+#bossDigimonContainer {
+  display: flex;
+  justify-content: center;
+  min-height: 150px;
+  gap: 20px;
+  animation: slideInTop 0.6s ease-out forwards;
+}
+
+.digimon-grid-boss {
+  flex: 1;
+  gap: 16px;
+  margin: 0;
+  animation: blackPulse 6s ease-in-out infinite;
+  border: 2px solid #333;
+  border-radius: 10px;
+  padding: 12px;
+  box-shadow: inset 0 8px 20px rgba(0, 0, 0, 0.6);
+}
+
+.digimon-grid-player {
+  width: 100%;
+  animation: blackPulse 6s ease-in-out infinite;
+  border: 2px solid #333;
+  border-radius: 10px;
+  padding: 12px;
+  box-shadow: inset 0 8px 20px rgba(0, 0, 0, 0.6);
+}
+
+.digimon-grid {
+  gap: 14px;
+  margin-top: 12px;
+}
+
+.digimon-card {
+  border-radius: 10px;
+  padding: 8px;
+
+  cursor: pointer;
+  text-align: center; /* Hover transition */
+  transition:
+    transform 0.3s,
+    box-shadow 0.3s,
+    background-color 0.6s; /* Entrance animation uses margin, not transform */
+  animation: slideInLeft 0.6s ease-out forwards;
+}
+.digimon-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+@keyframes slideInLeft {
+  from {
+    margin-left: -100px;
+    opacity: 0;
+  }
+  to {
+    margin-left: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes slideInTop {
+  from {
+    margin-top: -100px;
+    opacity: 0;
+  }
+  to {
+    margin-top: 0;
+    opacity: 1;
+  }
+}
+
+.active {
+  background-color: green;
+}
+
+.digimon-card img {
+  border-radius: 15px;
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+  margin-bottom: 8px;
+}
+
+.digimon-card h3 {
+  font-size: 1.3em;
+  margin-bottom: 10px;
+  color: #00ff00;
+}
+
+.digimon-card .level {
+  display: inline-block;
+  background-color: #3498db;
+  color: white;
+  padding: 5px;
+  border-radius: 3px;
+  font-size: 0.85em;
+  margin-bottom: 4px;
+}
+
+.digimon-card .type {
+  display: inline-block;
+  background-color: #2ecc71;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 3px;
+  font-size: 0.85em;
+  margin-left: 5px;
+  margin-bottom: 10px;
+}
+
+.digimon-card p {
+  font-size: 0.9em;
+  color: #00ff00;
+}
+
+footer {
+  font-size: 1.5em;
+  text-align: center;
+  padding: 20px;
+  margin-top: 50px;
+}
+
+footer p {
+  color: #1319b7;
+}
+
+@media (max-width: 1199px) {
+  header h1 {
+    font-size: 2em;
+  }
+
+  main {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+
+  .button-list {
+    flex-direction: row;
+    gap: 12px;
+  }
+
+  .left-panel {
+    width: 100%;
+  }
+
+  .info {
+    width: 100%;
+  }
+
+  .rank {
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .row {
+    flex-direction: column;
+  }
+
+  #digimonContainer {
+    flex-direction: column;
+  }
+}

@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Digimon Card Database</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="main.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <h1 class="slide-text">Digimon Battle</h1>
+    </header>
+
+    <main>
+      <div class="button-list">
+        <button id="fight" onclick="fightButton()">Fight</button>
+        <button id="reset" onclick="resetGame()">Reset Game</button>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="left-panel">
+            <div class="info">
+              <div class="rank">
+                <h2>Digimon Rank</h2>
+                <div class="rank-levels">
+                  <p alt="Mega">Mega</p>
+                  <p alt="Ultimate">Ultimate</p>
+                  <p alt="Champion">Champion</p>
+                  <p alt="Rookie">Rookie</p>
+                  <p alt="In Training">In Training</p>
+                </div>
+              </div>
+              <div class="score">
+                <div class="player-score" id="player-score">
+                  <h3>Player Score:</h3>
+                  <p id="playerScore">0</p>
+                </div>
+                <div class="boss-score" id="boss-score">
+                  <h3>Boss Score:</h3>
+                  <p id="bossScore">0</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="digimonGrid" class="digimon-grid-boss">
+            <h2>Boss Digimon</h2>
+            <div id="bossDigimonContainer"></div>
+          </div>
+        </div>
+
+        <div id="digimonGrid" class="digimon-grid-player">
+          <h2>Player hand</h2>
+          <div id="digimonContainer"></div>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <p>&copy; 2026 Digimon Database. All rights reserved.</p>
+    </footer>
+  </body>
+</html>
