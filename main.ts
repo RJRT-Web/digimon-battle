@@ -9,11 +9,24 @@ const bossScore = document.getElementById("bossScore") as HTMLElement;
 const selectedCardsCount = document.getElementById(
   "selectedCardsCount",
 ) as HTMLElement;
+const overlay = document.getElementById("overlay") as HTMLElement;
+const popupH2 = document.getElementById("popupH2") as HTMLElement;
+const popupP = document.getElementById("popupP") as HTMLElement;
 
 interface Digimon {
   name: string;
   img: string;
   level: string;
+}
+
+function openPopup() {
+  overlay.style.display = "flex";
+  popupH2.textContent = "Rules";
+  popupP.textContent =
+    "Select a Digimon card to play use. The highest rank Digimon wins the round. The first to win 3 rounds wins the game.Digimon Rank are Mega > Ultimate > Champion > Rookie > In Training";
+}
+function closePopup() {
+  overlay.style.display = "none";
 }
 
 async function loadDigimon() {
@@ -172,7 +185,9 @@ function fightButton(): void {
   );
   console.log(`Boss fight Card Level: ${bossLevel}`);
   if (digimonContainer.firstChild === null) {
-    alert("No Digimon cards available to fight!");
+    overlay.style.display = "flex";
+    popupH2.textContent = "Warning!";
+    popupP.textContent = "No Digimon cards available to fight!";
     playerWin = 0;
     bossWin = 0;
     selectedCards = [];
@@ -181,11 +196,16 @@ function fightButton(): void {
     clearRandomCards();
     clearBossCard();
     resetRandomCard();
+    resetBossCard();
   } else if (selectedCards.length === 0 || selectedCards.length > 1) {
-    alert("Please select exactly one Digimon to fight!");
+    overlay.style.display = "flex";
+    popupH2.textContent = "Warning!";
+    popupP.textContent = "Please select exactly one Digimon to fight!";
   } else {
     if (score(selectedCards[0]) < score(bossLevel)) {
-      alert("You lose!");
+      overlay.style.display = "flex";
+      popupH2.textContent = "You lose!";
+      popupP.textContent = "The Boss Digimon has a higher rank!";
       const cardToRemove = document.getElementById(cardName[0]);
       if (cardToRemove) cardToRemove.remove();
       bossWin++;
@@ -195,7 +215,9 @@ function fightButton(): void {
       selectedCards = [];
       cardName = [];
     } else if (score(selectedCards[0]) > score(bossLevel)) {
-      alert("You win!");
+      overlay.style.display = "flex";
+      popupH2.textContent = "You win!";
+      popupP.textContent = "Congratulations, you defeated the Boss Digimon!";
       const cardToRemove = document.getElementById(cardName[0]);
       if (cardToRemove) cardToRemove.remove();
       playerWin++;
@@ -205,7 +227,9 @@ function fightButton(): void {
       selectedCards = [];
       cardName = [];
     } else {
-      alert("tie!");
+      overlay.style.display = "flex";
+      popupH2.textContent = "Tie!";
+      popupP.textContent = "The player and boss Digimon have the same rank!";
       const cardToRemove = document.getElementById(cardName[0]);
       if (cardToRemove) cardToRemove.remove();
       clearBossCard();
@@ -215,7 +239,9 @@ function fightButton(): void {
     }
 
     if (playerWin === 3) {
-      alert("Congratulations! You have defeated the Boss Digimon!");
+      overlay.style.display = "flex";
+      popupH2.textContent = "Congratulations!";
+      popupP.textContent = "You have defeated the Boss Digimon!";
       playerWin = 0;
       bossWin = 0;
       selectedCards = [];
@@ -225,7 +251,10 @@ function fightButton(): void {
       clearBossCard();
       resetRandomCard();
     } else if (bossWin === 3) {
-      alert("The Boss Digimon has defeated you! Better luck next time!");
+      overlay.style.display = "flex";
+      popupH2.textContent = "Game Over!";
+      popupP.textContent =
+        "The Boss Digimon has defeated you! Better luck next time!";
       playerWin = 0;
       bossWin = 0;
       selectedCards = [];

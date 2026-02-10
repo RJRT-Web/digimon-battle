@@ -13,9 +13,20 @@
     </header>
 
     <main>
+      <div class="overlay" id="overlay">
+        <div class="popup">
+          <div class="info border-blue">
+            <h2 id="popupH2">Explanation!</h2>
+            <p id="popupP">This is a simple pop-up with an overlay.</p>
+          </div>
+          <button class="close-btn" onclick="closePopup()">Close</button>
+        </div>
+      </div>
+
       <div class="button-list">
         <button id="fight" onclick="fightButton()">Fight</button>
         <button id="reset" onclick="resetGame()">Reset Game</button>
+        <button id="explanation" onclick="openPopup()">Rule</button>
       </div>
       <div class="container">
         <div class="row">
@@ -48,7 +59,6 @@
             <div id="bossDigimonContainer"></div>
           </div>
         </div>
-
         <div id="digimonGrid" class="digimon-grid-player">
           <h2>Player hand</h2>
           <div id="digimonContainer"></div>
